@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>中国历史人物数据库</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border:1px solid black;
+            }
+            td {
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>中国历史人物数据库</h1>
+        <h2>科举信息</h2>
+        {% for exam in exams %}
+            <table>
+                <tr>
+                    <td>科举人</td>
+                    <td><a href="/search_person_id/?person_id={{exam['c_personid']}}">{{exam['c_name_chn']}}</a></td>
+                </tr>
+                <tr>
+                    <td>年份</td>
+                    <td>{{exam['c_year']}}</td>
+                </tr>
+                <tr>
+                    <td>名次</td>
+                    <td>{{exam['c_exam_rank']}}</td>
+                </tr>
+
+            </table>
+        {% endfor %}
+    </body>
+</html>

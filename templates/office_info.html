@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>中国历史人物数据库</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border:1px solid black;
+            }
+            td {
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>中国历史人物数据库</h1>
+        <h2>所有担任过此官职的人</h2>
+        {% for person in persons %}
+            <li><a href='/search_person_id/?person_id={{person['c_personid']}}'>{{person['c_name_chn']}}</a></li>
+        {% endfor %}
+        <h2>官职信息</h2>
+        {% for office in offices %}
+        <li>{{office['c_office_chn']}}</li>
+        {% endfor %}
+    </body>
+</html> 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>历史人物空间定位</title>
+    <meta charset="utf-8" />
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Ag48-5xZJeM84pIu6SyK40DtUA2wAIaBB6YOqLEqPInyxnBs9kYBgf6TfUwnunBb' async defer></script>
+    <script type='text/javascript'>
+        function loadMapScenario() {
+            var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                center: new Microsoft.Maps.Location({{y_coord}},{{x_coord}}),
+                zoom: 10
+            });
+
+            var center = map.getCenter();
+
+            var pin = new Microsoft.Maps.Pushpin(center, {
+                title: '{{ person_name }}',
+                subTitle: '纬度: {{ x_coord }}, 经度: {{ y_coord }}',
+                text: '1'
+            });
+
+            map.entities.push(pin);
+        }
+    </script>
+</head>
+<body onload="loadMapScenario();">
+    <div id="myMap" style="position:relative;width:800px;height:800px;"></div>
+</body>
+</html>

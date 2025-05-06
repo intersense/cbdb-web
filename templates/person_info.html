@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>中国历史人物数据库</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border:1px solid black;
+            }
+            td {
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>中国历史人物数据库</h1>
+        <h2>人物信息</h2>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>{{person['c_personid']}}</td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td>{{person['c_name_chn']}} <a href=http://localhost:8002/search/?keyword={{person['c_name_chn']}}>检索相关文献</a></td>
+            </tr>
+            <tr>
+                <td>拼音</td>
+                <td>{{person['c_name']}}</td>
+            </tr>
+            <tr>
+                <td>生卒年</td>
+                <td>{{person['c_birthyear']}}-{{person['c_deathyear']}}</td>
+            </tr>
+            <tr>
+                <td>别名</td>
+                <td>
+                    {% for alt_name in alt_names %}
+                        <li>{{alt_name['c_alt_name_chn']}}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>籍贯</td>
+                {% for birth_place in birth_places %}
+                    <td>{{birth_place['c_name_chn']}}
+                        {% if birth_place['x_coord'] and birth_place['y_coord'] %}
+                            <a href='/show-map/?x_coord={{birth_place['x_coord']}}&y_coord={{birth_place['y_coord']}}&person_name={{person['c_name_chn']}}'>地图上显示</a>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>著作</td>
+                <td>
+                    {% for work in works %}
+                        <li><a href="http://localhost:8001/search-book/?keyword={{work['c_title_chn']}}">{{work['c_title_chn']}}</a></li>
+                    {% endfor %}
+            </tr>
+            <tr>
+                <td>史料记录</td><td>{{person['c_fl_ey_notes']}}</td>
+            </tr>
+        </table>
+    </body>
+</html>

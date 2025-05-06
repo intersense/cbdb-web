@@ -1,0 +1,5 @@
+{% for kinship in kinships %}
+
+<a href="/search_person_name/?name={{kinship.kin_name}}">{{kinship.kin_name}}</a> ({{kinship.kin_birth_year}}-{{kinship.kin_death_year}}) 为 <a href="/search_person_name/?name={{kinship.person_name}}">{{kinship.person_name}}</a> ({{kinship.person_birth_year}}-{{kinship.person_death_year}}) 的 {{kinship.relationship}}<br/>
+
+{% endfor %}

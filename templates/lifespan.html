@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>历史人物寿命查询</title>
+    </head>
+    <body>
+        <h1>寿命[{{min_death_age}},{{max_death_age}}]的所有人物</h1>
+        <li>姓名, 寿命</li>
+        {% for person in persons %}
+            <li><a href='/search_person_id/?person_id={{person['c_personid']}}'>{{person['c_name_chn']}}</a>, {{person['c_deathyear'] - person['c_birthyear']}}</li>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,230 @@
+<html>
+    <head>
+        <title>中国历代人物传记资料库（CBDB）Web检索</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="mt-5 mb-4">中国历代人物传记资料库（CBDB）Web检索
+            </h1>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="person-search-tab" data-bs-toggle="tab" data-bs-target="#person-search" type="button" role="tab" aria-controls="person-search" aria-selected="true">按人物搜索</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="office-search-tab" data-bs-toggle="tab" data-bs-target="#office-search" type="button" role="tab" aria-controls="office-search" aria-selected="false">按官职搜索</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="exam-search-tab" data-bs-toggle="tab" data-bs-target="#exam-search" type="button" role="tab" aria-controls="exam-search" aria-selected="false">查询科举信息</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sources-tab" data-bs-toggle="tab" data-bs-target="#sources" type="button" role="tab" aria-controls="sources" aria-selected="false">人物著作</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lifespan-search-tab" data-bs-toggle="tab" data-bs-target="#lifespan-search" type="button" role="tab" aria-controls="lifespan-search" aria-selected="false">历史人物寿命查询</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="placename-search-tab" data-bs-toggle="tab" data-bs-target="#placename-search" type="button" role="tab" aria-controls="placename-search" aria-selected="false">按地名查询</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="kinship-search-tab" data-bs-toggle="tab" data-bs-target="#kinship-search" type="button" role="tab" aria-controls="kinship-search" aria-selected="false">查询亲属关系</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="social-network-search-tab" data-bs-toggle="tab" data-bs-target="#social-network-search" type="button" role="tab" aria-controls="social-network-search" aria-selected="false">查询历史人物的社会关系网络</button>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content mt-3" id="myTabContent">
+                <div class="tab-pane fade show active" id="person-search" role="tabpanel" aria-labelledby="person-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">按人物搜索</h2> <!-- Visually hidden as tab provides context -->
+                    <!-- [biog_main, address, altname_data] -->
+                    <form action="/search_person_id/" method="get" class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="person_id" class="col-form-label">人物ID</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="person_id" id="person_id" class="form-control">
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+
+                    <form action="/search_person_name/" class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="name" class="col-form-label">姓名</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="office-search" role="tabpanel" aria-labelledby="office-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">按官职搜索</h2>
+                    <!-- [office_codes, biog_main, posted_to_office_data] -->
+                    <form action="/search_office/" class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="office" class="col-form-label">官职</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="office" id="office" class="form-control">
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="exam-search" role="tabpanel" aria-labelledby="exam-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">查询科举信息</h2>
+                    <!-- [entry_data, biog_main, entry_codes] -->
+                    <form action="/search_exam/" class="mb-3">
+                        <div class="row g-3 align-items-center mb-2">
+                            <div class="col-auto">
+                                <label for="exam" class="col-form-label">科举类型</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="exam" id="exam" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mb-2">
+                            <div class="col-auto">
+                                <label for="start_year" class="col-form-label">开始年份</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="start_year" id="start_year" class="form-control">
+                            </div>
+                            <div class="col-auto">
+                                <label for="end_year" class="col-form-label">截止年份</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="end_year" id="end_year" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">人物著作</h2>
+                    <!-- [text_codes]<br/> -->
+                    <p><a href='/sources/' class="btn btn-link">CBDB中人物的著作</a></p>
+                </div>
+
+                <div class="tab-pane fade" id="lifespan-search" role="tabpanel" aria-labelledby="lifespan-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">历史人物寿命查询</h2>
+                    <form action="/search_lifespan/" class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender_male" value="男">
+                                    <label class="form-check-label" for="gender_male">男</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender_female" value="女" checked>
+                                    <label class="form-check-label" for="gender_female">女</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="min_death_age" id="min_death_age" class="form-control" style="width: 60px;">
+                            </div>
+                            <div class="col-auto">
+                                <label class="col-form-label">至</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="max_death_age" id="max_death_age" class="form-control" style="width: 60px;">
+                            </div>
+                            <div class="col-auto">
+                                <label class="col-form-label">岁之间</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="placename-search" role="tabpanel" aria-labelledby="placename-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">按地名查询</h2>
+                    <form action="/search_placename/" class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="placename" class="col-form-label">地名</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="placename" id="placename" class="form-control">
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="搜索" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="kinship-search" role="tabpanel" aria-labelledby="kinship-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">查询亲属关系</h2>
+                    <form action="/search_kinship" method="post" class="mb-3">
+                        <div class="mb-3">
+                            <label for="kinship_types" class="form-label">查询关系类型:</label><br>
+                            <select name="kinship_types" id="kinship_types" multiple class="form-select">
+                                {% for kinship_type in kinship_types %}
+                                <option value="{{kinship_type['c_kincode']}}">{{kinship_type['c_kinrel_chn']}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="row g-3 align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="person_id_kinship" class="col-form-label">人物ID</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="person_id" id="person_id_kinship" class="form-control">
+                            </div>
+                        </div>
+                        <input type="submit" value="搜索" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="social-network-search" role="tabpanel" aria-labelledby="social-network-search-tab">
+                    <h2 class="mt-4 mb-3 visually-hidden">查询历史人物的社会关系网络</h2>
+                    <form action="/search_social_network/" method="post" class="mb-5">
+                        <div class="mb-3">
+                            <label for="social_types" class="form-label">查询关系类型:</label><br>
+                            <select name="social_types" id="social_types" multiple class="form-select">
+                                {% for social_type in social_network_types %}
+                                <option value="{{social_type['c_assoc_code']}}">{{social_type['c_assoc_desc_chn']}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="row g-3 align-items-center mb-3">
+                            <div class="col-auto">
+                                <label for="person_id_social" class="col-form-label">人物ID</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="person_id" id="person_id_social" class="form-control">
+                            </div>
+                        </div>
+                        <input type="submit" value="搜索" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

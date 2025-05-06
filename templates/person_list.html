@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>中国历史人物数据库</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border:1px solid black;
+            }
+            td {
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>中国历史人物数据库</h1>
+        <h2>人物信息</h2>
+        
+            <table>
+                {% for person in persons %}
+                <tr>
+                    <td>ID</td>
+                    <td>{{person['c_personid']}}</td>
+                </tr>
+                <tr>
+                    <td><a href='/search_person_id/?person_id={{ person['c_personid'] }}'>{{person['c_name_chn']}}</a></td>
+                    <td>
+                        <form action="/search_social_network/" method="post">
+                            <input type="hidden" name="person_id" id = "person_id" value="{{person['c_personid']}}"/>
+                            <input type="hidden" name="social_types" id="social_types" value="23,7,13,15,18"/>
+                            <input type="submit" value="人物社会网络示例" />
+                        </form>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>生卒年</td>
+                    <td>{{person['c_birthyear']}}-{{person['c_deathyear']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        
+    </body>
+</html>
