@@ -15,4 +15,6 @@ webUI for CBDB (SQLite version)
 ## 系统运行必须的包
 - fastapi
 - networkx, pyvis
-- cbdb (sqlite version)：将下载的cbdb sqlite版放到与main.py相同的目录，命名为cbdb.db，并将main.py中的DATABASE = '../cbdb2024.db'改为DATABASE = './cbdb.db'
+- cbdb.db (sqlite version)：将下载的cbdb sqlite版放到与main.py相同的目录，命名为cbdb.db，并将main.py中的DATABASE = '../cbdb2024.db'改为DATABASE = './cbdb.db'
+    - CBDB官网 https://projects.iq.harvard.edu/cbdb/home
+    - CBDB下载 https://github.com/cbdb-project/cbdb_sqlite/blob/master/latest.7z 下载之后解压缩
