@@ -1,12 +1,38 @@
 <html>
     <head>
-        <title>历史人物寿命查询</title>
+        <title>中国历代人物传记资料库（CBDB） 历史人物寿命查询</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
-        <h1>寿命[{{min_death_age}},{{max_death_age}}]的所有人物</h1>
-        <li>姓名, 寿命</li>
-        {% for person in persons %}
-            <li><a href='/search_person_id/?person_id={{person['c_personid']}}'>{{person['c_name_chn']}}</a>, {{person['c_deathyear'] - person['c_birthyear']}}</li>
-        {% endfor %}
+        <div class="container mt-5">
+            <h1 class="mb-4">历史人物寿命查询结果</h1>
+            <h2 class="mb-3 h4">查询范围：{{min_death_age}} - {{max_death_age}} 岁</h2>
+
+            {% if persons %}
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">姓名</th>
+                            <th scope="col">寿命 (岁)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in persons %}
+                        <tr>
+                            <td><a href='/search_person_id/?person_id={{person['c_personid']}}'>{{person['c_name_chn']}}</a></td>
+                            <td>{{person['c_deathyear'] - person['c_birthyear']}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="mt-3">没有找到符合条件的人物信息。</p>
+            {% endif %}
+
+            <div class="mt-4">
+                <a href="/" class="btn btn-secondary">返回搜索页</a>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
