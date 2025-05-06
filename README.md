@@ -1,7 +1,10 @@
 # 中国历代人物传记资料库（CBDB）Web查询系统
 webUI for CBDB (SQLite version)
+
 - 系统运行界面
+
 <img width="1175" alt="cbdb-web-search-form" src="https://github.com/user-attachments/assets/1ee25bf0-0520-4214-9932-8a67a82742f6" />
+
 - 安装必要的包
   - pip install fastapi uvicorn pyvis zhconv
 - 运行系统
